@@ -1,0 +1,450 @@
+/* =============================================
+   TTT.css — Modern Tic-Tac-Toe Stylesheet
+   ============================================= */
+
+/* ── Reset ─────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ── Variables ─────────────────────────────── */
+  :root {
+    /* Brand colors */
+    --x-color:       #7c3aed;
+    --x-light:       #ede9fe;
+    --x-mid:         #c4b5fd;
+    --x-dark:        #5b21b6;
+  
+    --o-color:       #2563eb;
+    --o-light:       #dbeafe;
+    --o-mid:         #93c5fd;
+    --o-dark:        #1d4ed8;
+  
+    --win-color:     #16a34a;
+    --win-light:     #dcfce7;
+    --win-mid:       #4ade80;
+  
+    --draw-color:    #ca8a04;
+    --draw-light:    #fefce8;
+    --draw-mid:      #fde047;
+  
+    /* Surface */
+    --bg:            #eef2ff;
+    --card-bg:       #ffffff;
+    --surface:       #f5f3ff;
+    --border:        rgba(124, 58, 237, 0.12);
+    --border-hover:  #c4b5fd;
+  
+    /* Text */
+    --text:          #1e1b4b;
+    --text-soft:     #6b7280;
+    --text-muted:    #9ca3af;
+  
+    /* Shadows */
+    --card-shadow:   0 8px 40px rgba(99, 79, 211, 0.13), 0 2px 8px rgba(0,0,0,0.06);
+    --btn-shadow:    0 3px 14px rgba(124, 58, 237, 0.32);
+    --btn-shadow-hv: 0 5px 22px rgba(124, 58, 237, 0.45);
+  
+    /* Sizes */
+    --cell-size:     110px;
+    --radius-card:   24px;
+    --radius-cell:   16px;
+    --radius-btn:    12px;
+    --radius-pill:   40px;
+  }
+  
+  /* ── Base ──────────────────────────────────── */
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* ── Background Orbs ───────────────────────── */
+  .bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+  }
+  
+  .orb-1 {
+    width: 420px;
+    height: 420px;
+    background: #c4b5fd;
+    top: -120px;
+    left: -100px;
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+  
+  .orb-2 {
+    width: 350px;
+    height: 350px;
+    background: #93c5fd;
+    bottom: -80px;
+    right: -80px;
+    animation: orbFloat 10s ease-in-out infinite reverse;
+  }
+  
+  .orb-3 {
+    width: 250px;
+    height: 250px;
+    background: #a5f3fc;
+    top: 50%;
+    left: 55%;
+    animation: orbFloat 12s ease-in-out infinite 2s;
+  }
+  
+  @keyframes orbFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50%       { transform: translateY(-30px) scale(1.06); }
+  }
+  
+  /* ── Confetti Canvas ───────────────────────── */
+  #confetti-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 200;
+  }
+  
+  /* ── Page Wrapper ──────────────────────────── */
+  .page {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* ── Card ──────────────────────────────────── */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius-card);
+    padding: 2.25rem 2.5rem 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(196, 181, 253, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* ── Card Header ───────────────────────────── */
+  .card-header {
+    text-align: center;
+    margin-bottom: 1.6rem;
+  }
+  
+  .title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  
+  .subtitle {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+  /* ── Score Row ─────────────────────────────── */
+  .score-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.4rem;
+  }
+  
+  .score-pill {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 8px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  
+  .score-pill.x-pill {
+    background: var(--x-light);
+    border-color: var(--x-mid);
+  }
+  
+  .score-pill.o-pill {
+    background: var(--o-light);
+    border-color: var(--o-mid);
+  }
+  
+  .score-pill.d-pill {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+  }
+  
+  .score-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  
+  .x-pill .score-label { color: var(--x-dark); }
+  .o-pill .score-label { color: var(--o-dark); }
+  .d-pill .score-label { color: var(--text-soft); }
+  
+  .score-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.9rem;
+    line-height: 1;
+    font-weight: 400;
+  }
+  
+  .x-pill .score-num { color: var(--x-color); }
+  .o-pill .score-num { color: var(--o-color); }
+  .d-pill .score-num { color: var(--text-soft); }
+  
+  /* ── Turn Indicator ────────────────────────── */
+  .turn-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    min-height: 42px;
+    align-items: center;
+  }
+  
+  .turn-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 20px;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition: all 0.3s ease;
+  }
+  
+  .turn-chip.x-chip {
+    background: var(--x-light);
+    color: var(--x-dark);
+    border: 1.5px solid var(--x-mid);
+  }
+  
+  .turn-chip.o-chip {
+    background: var(--o-light);
+    color: var(--o-dark);
+    border: 1.5px solid var(--o-mid);
+  }
+  
+  .turn-chip.win-chip {
+    background: var(--win-light);
+    color: var(--win-color);
+    border: 1.5px solid var(--win-mid);
+  }
+  
+  .turn-chip.draw-chip {
+    background: var(--draw-light);
+    color: var(--draw-color);
+    border: 1.5px solid var(--draw-mid);
+  }
+  
+  .chip-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  
+  .x-chip  .chip-dot { background: var(--x-color); }
+  .o-chip  .chip-dot { background: var(--o-color); }
+  .win-chip .chip-dot { background: var(--win-color); }
+  .draw-chip .chip-dot { background: var(--draw-color); }
+  
+  /* ── Game Board ────────────────────────────── */
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, var(--cell-size));
+    grid-template-rows:    repeat(3, var(--cell-size));
+    gap: 10px;
+    margin: 0 auto 1.6rem;
+    width: fit-content;
+  }
+  
+  /* ── Cell ──────────────────────────────────── */
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-cell);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background  0.18s ease,
+      border-color 0.18s ease,
+      transform    0.15s ease,
+      box-shadow   0.2s ease;
+  }
+  
+  .cell:hover:not(.taken) {
+    background: #f5f3ff;
+    border-color: var(--x-mid);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.14);
+  }
+  
+  .cell.taken {
+    cursor: default;
+  }
+  
+  /* X cell */
+  .cell.x-cell {
+    color: var(--x-color);
+    background: var(--x-light);
+    border-color: var(--x-mid);
+  }
+  
+  /* O cell */
+  .cell.o-cell {
+    color: var(--o-color);
+    background: var(--o-light);
+    border-color: var(--o-mid);
+  }
+  
+  /* Winner highlight */
+  .cell.winner-cell {
+    background: var(--win-light) !important;
+    border-color: var(--win-mid) !important;
+    color: var(--win-color) !important;
+    box-shadow:
+      0 0 0 2.5px var(--win-mid),
+      0 4px 24px rgba(74, 222, 128, 0.28) !important;
+    animation: winnerPulse 0.85s ease-in-out infinite alternate;
+  }
+  
+  @keyframes winnerPulse {
+    from {
+      box-shadow:
+        0 0 0 2px var(--win-mid),
+        0 4px 16px rgba(74, 222, 128, 0.22);
+    }
+    to {
+      box-shadow:
+        0 0 0 3.5px var(--win-mid),
+        0 6px 32px rgba(74, 222, 128, 0.5);
+    }
+  }
+  
+  /* Pop-in animation when placing a piece */
+  .cell.pop {
+    animation: cellPop 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  
+  @keyframes cellPop {
+    0%   { transform: scale(0.4);  opacity: 0.3; }
+    65%  { transform: scale(1.12); }
+    100% { transform: scale(1);    opacity: 1; }
+  }
+  
+  /* ── Buttons ───────────────────────────────── */
+  .btn-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn {
+    flex: 1;
+    padding: 12px 10px;
+    border-radius: var(--radius-btn);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: all 0.16s ease;
+    border: none;
+  }
+  
+  .btn:active {
+    transform: scale(0.96);
+  }
+  
+  /* Primary — gradient purple */
+  .btn-primary {
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+    color: #ffffff;
+    box-shadow: var(--btn-shadow);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #6d28d9 0%, #4338ca 100%);
+    box-shadow: var(--btn-shadow-hv);
+    transform: translateY(-1px);
+  }
+  
+  /* Ghost — outlined */
+  .btn-ghost {
+    background: #f9fafb;
+    color: var(--text-soft);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .btn-ghost:hover {
+    background: #f3f4f6;
+    color: var(--text);
+    border-color: #d1d5db;
+  }
+  
+  /* ── Responsive ────────────────────────────── */
+  @media (max-width: 440px) {
+    :root { --cell-size: 92px; }
+  
+    .card {
+      padding: 1.75rem 1.5rem 2rem;
+    }
+  
+    .title {
+      font-size: 1.7rem;
+    }
+  
+    .cell {
+      font-size: 2.3rem;
+      border-radius: 12px;
+    }
+  
+    .board {
+      gap: 8px;
+    }
+  }
+  
+  @media (max-width: 340px) {
+    :root { --cell-size: 80px; }
+  
+    .cell { font-size: 2rem; }
+    .score-num { font-size: 1.6rem; }
+  }
