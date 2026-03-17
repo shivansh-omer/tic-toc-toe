@@ -43,3 +43,19 @@ python -m http.server 8000
 7. Click **Reset Scores** to clear all scores and start completely fresh
  
 ---
+
+## ✨ Features
+ 
+| Feature | Details |
+|---|---|
+| 🎯 Win detection | Checks all 8 winning combinations after every move |
+| 🟢 Winner highlight | The 3 winning cells glow green with a pulsing animation |
+| 🎉 Confetti | Colourful canvas confetti bursts on every win |
+| 📊 Score tracker | Tracks X wins, O wins, and draws across multiple rounds |
+| 🔵 Turn indicator | Live colour-coded chip shows whose turn it is |
+| 🤝 Draw detection | Correctly announces a draw when the board is full |
+| ✨ Cell animation | Smooth pop-in animation when placing a mark |
+| 🌊 Animated background | Three floating blurred orbs (purple, blue, cyan) |
+| 📱 Responsive layout | Adapts cleanly for mobile, tablet, and desktop |
+ 
+---
