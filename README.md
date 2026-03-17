@@ -31,4 +31,15 @@ python -m http.server 8000
 > **Note:** The game uses Google Fonts (DM Sans + DM Serif Display). An internet connection is needed for fonts to load correctly. The game works offline too — just with a fallback font.
  
 ---
+
+ ## 🎮 How to Play
  
+1. The game is played by **two players** on the same device
+2. **Player X** always goes first
+3. Players take turns clicking an empty cell to place their mark
+4. The first player to get **3 in a row** — horizontally, vertically, or diagonally — wins
+5. If all 9 cells fill up with no winner, it's a **draw**
+6. Click **↺ Restart** to start a new round (scores are preserved)
+7. Click **Reset Scores** to clear all scores and start completely fresh
+ 
+---
