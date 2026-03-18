@@ -78,3 +78,11 @@ python -m http.server 8000
 | Draw | Amber | `#ca8a04` |
 | Background | Indigo tint | `#eef2ff` |
 | Card surface | White | `#ffffff` |
+
+**Animations**
+- `orbFloat` — background orbs slowly float up and down
+- `cellPop` — cell scales from 0.4× to 1× with a slight overshoot on click
+- `winnerPulse` — winning cells gently pulse their green glow
+ 
+---
+
