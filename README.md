@@ -86,3 +86,39 @@ python -m http.server 8000
  
 ---
 
+## 🛠️ Code Overview
+ 
+### `ttt.html`
+Semantic HTML5 layout. Contains:
+- Three decorative `.bg-orb` divs for the animated background
+- A `<canvas id="confetti-canvas">` for the win animation
+- Score pills for X, Draws, and O
+- A `.turn-chip` div that updates dynamically
+- A 3×3 grid of `.cell` divs (indexed `0–8` via `data-index`)
+- Two buttons: Restart and Reset Scores
+ 
+### `TTT.css`
+All visual styling using CSS custom properties (`:root` variables) for easy customisation. Key sections:
+- **Variables** — all colors, shadows, sizes in one place at the top
+- **Background orbs** — `position: fixed` blurred circles with `orbFloat` keyframe
+- **Score pills** — colored containers for X, O, and Draw counts
+- **Turn chip** — pill badge that switches class (`x-chip`, `o-chip`, `win-chip`, `draw-chip`)
+- **Board & cells** — CSS Grid layout, hover scale effect, pop animation, winner pulse
+- **Buttons** — gradient primary button and outlined ghost button
+- **Responsive breakpoints** — `440px` (tablets) and `340px` (small phones)
+ 
+### `ttt.js`
+Plain vanilla JavaScript — no libraries. Key functions:
+ 
+| Function | Purpose |
+|---|---|
+| `updateTurnChip()` | Updates the turn indicator chip for the current player |
+| `setChip(type, msg)` | Sets the chip class and text (used for win and draw states too) |
+| `getWinningCombo()` | Loops through all 8 win combinations and returns the match or `null` |
+| `isBoardFull()` | Returns `true` if all 9 cells are filled |
+| `handleCellClick()` | Main game logic — places mark, checks win/draw, switches player |
+| `resetBoard()` | Clears the board and resets state; keeps scores intact |
+| `resetAll()` | Resets both the board and all scores to zero |
+| `launchConfetti()` | Draws animated confetti rectangles on the canvas for 3.5 seconds |
+ 
+---
