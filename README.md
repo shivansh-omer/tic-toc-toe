@@ -59,3 +59,22 @@ python -m http.server 8000
 | 📱 Responsive layout | Adapts cleanly for mobile, tablet, and desktop |
  
 ---
+
+## 🎨 Design Details
+ 
+**Fonts (via Google Fonts)**
+- `DM Serif Display` — title heading and cell symbols (✕ and ○)
+- `DM Sans` — all body text, labels, and buttons
+ 
+**Color Palette**
+ 
+| Role | Color | Hex |
+|---|---|---|
+| Player X | Purple | `#7c3aed` |
+| Player X light | Lavender | `#ede9fe` |
+| Player O | Blue | `#2563eb` |
+| Player O light | Sky blue | `#dbeafe` |
+| Winner | Green | `#16a34a` |
+| Draw | Amber | `#ca8a04` |
+| Background | Indigo tint | `#eef2ff` |
+| Card surface | White | `#ffffff` |
