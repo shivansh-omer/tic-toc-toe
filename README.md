@@ -171,5 +171,15 @@ All visual tokens are defined as CSS variables at the top of `TTT.css` — edit 
 ```
  
 ---
-
+## 🌐 Browser Compatibility
+ 
+| Browser | Supported |
+|---|---|
+| Google Chrome | ✅ |
+| Mozilla Firefox | ✅ |
+| Microsoft Edge | ✅ |
+| Safari (macOS & iOS) | ✅ |
+| Mobile Chrome / Firefox | ✅ |
+ 
+Requires support for CSS Grid, CSS custom properties, and `requestAnimationFrame` — all available in every modern browser.
 
