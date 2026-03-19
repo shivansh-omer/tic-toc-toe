@@ -183,3 +183,12 @@ All visual tokens are defined as CSS variables at the top of `TTT.css` — edit 
  
 Requires support for CSS Grid, CSS custom properties, and `requestAnimationFrame` — all available in every modern browser.
 
+---
+ 
+## 📄 License
+ 
+Free to use, modify, and distribute for personal or educational purposes.
+ 
+---
+ 
+*Built with HTML, CSS & JavaScript — zero dependencies.*
