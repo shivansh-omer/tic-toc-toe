@@ -122,3 +122,25 @@ Plain vanilla JavaScript — no libraries. Key functions:
 | `launchConfetti()` | Draws animated confetti rectangles on the canvas for 3.5 seconds |
  
 ---
+ 
+## 📐 Win Combinations
+ 
+All 8 possible winning lines checked after every move:
+ 
+```
+Rows:        [0, 1, 2]   [3, 4, 5]   [6, 7, 8]
+Columns:     [0, 3, 6]   [1, 4, 7]   [2, 5, 8]
+Diagonals:   [0, 4, 8]   [2, 4, 6]
+```
+ 
+```
+ 0 | 1 | 2
+-----------
+ 3 | 4 | 5
+-----------
+ 6 | 7 | 8
+```
+ 
+---
+
+ 
