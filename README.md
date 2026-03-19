@@ -143,4 +143,33 @@ Diagonals:   [0, 4, 8]   [2, 4, 6]
  
 ---
 
+ ## 🔧 Customisation
  
+All visual tokens are defined as CSS variables at the top of `TTT.css` — edit them to retheme the entire game instantly.
+ 
+**Change player colors:**
+```css
+:root {
+  --x-color: #7c3aed;   /* Player X — purple */
+  --o-color: #2563eb;   /* Player O — blue   */
+}
+```
+ 
+**Change cell size:**
+```css
+:root {
+  --cell-size: 110px;   /* Increase for bigger cells */
+}
+```
+ 
+**Change card corner radius:**
+```css
+:root {
+  --radius-card: 24px;
+  --radius-cell: 16px;
+}
+```
+ 
+---
+
+
