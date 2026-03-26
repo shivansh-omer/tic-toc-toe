@@ -86,6 +86,10 @@ python -m http.server 8000
  
 ---
 
+![App Screenshot](Screenshot.png)
+
+---
+
 ## 🛠️ Code Overview
  
 ### `ttt.html`
